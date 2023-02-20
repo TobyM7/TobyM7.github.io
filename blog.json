@@ -5,5 +5,12 @@
   "sub_title": "About Me",
   "top_image":  "Code.jpeg",
   "visible": true
- }
+ },
+ {
+    "url_title": "SantaRun",
+    "title": "Santa Run",
+    "sub_title": "A platformer game made in python using the pygame modual",
+    "top_image": "santa.png",
+    "visible": true
+   }
 ]

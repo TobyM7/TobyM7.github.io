@@ -2,7 +2,7 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 let interval = null;
 
-document.querySelector("h1").onmouseover = (event) => {
+document.querySelector("h3").onmouseover = (event) => {
   let iteration = 0;
 
   clearInterval(interval);
@@ -89,3 +89,47 @@ const animateBubble = (x) => {
 };
 
 window.onmousemove = (e) => animateBubble(e.clientX);
+$(function () {
+  $(".btn-6")
+    .on("mouseenter", function (e) {
+      var parentOffset = $(this).offset(),
+        relX = e.pageX - parentOffset.left,
+        relY = e.pageY - parentOffset.top;
+      $(this).find("span").css({ top: relY, left: relX });
+    })
+    .on("mouseout", function (e) {
+      var parentOffset = $(this).offset(),
+        relX = e.pageX - parentOffset.left,
+        relY = e.pageY - parentOffset.top;
+      $(this).find("span").css({ top: relY, left: relX });
+    });
+});
+
+function copyCodeToClipboard() {
+  const code = document.getElementById("code-box").textContent;
+  navigator.clipboard.writeText(code);
+  const copyMessage = document.getElementById("copy-message");
+  copyMessage.textContent = "Code copied";
+  copyMessage.style.display = "block";
+  setTimeout(() => {
+    copyMessage.style.display = "none";
+  }, 2000);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  var codeBlocks = document.querySelectorAll("code");
+  codeBlocks.forEach(function (codeBlock) {
+    var lang = codeBlock.getAttribute("class");
+    if (lang) {
+      var codeBox = document.createElement("div");
+
+      codeBlock.parentNode.insertBefore(codeBox, codeBlock);
+      codeBox.appendChild(codeBlock);
+
+      var langHeader = document.createElement("div");
+      langHeader.classList.add("code-lang-header");
+      langHeader.textContent = lang.replace("language-", "");
+      codeBox.insertBefore(langHeader, codeBox.firstChild);
+    }
+  });
+});

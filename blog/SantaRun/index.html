@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>my-first-blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Rubik:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../../index.css" />
+    <link rel="stylesheet" href="github-dark-default.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+  var codeBlocks = document.querySelectorAll("code");
+  codeBlocks.forEach(function(codeBlock) {
+    var lang = codeBlock.getAttribute("class");
+    if (lang) {
+      var codeBox = document.createElement("div");
+     
+      codeBlock.parentNode.insertBefore(codeBox, codeBlock);
+      codeBox.appendChild(codeBlock);
+
+      var langHeader = document.createElement("div");
+      langHeader.classList.add("code-lang-header");
+      langHeader.textContent = lang.replace("language-", "");
+      codeBox.insertBefore(langHeader, codeBox.firstChild);
+    }
+  });
+});
+  </script>
+  </head>
+  <body>
+    <div id="loading">
+      <div id="spinner"></div>
+    </div>
+    <a href="/" class="go_back"><i class="fas fa-arrow-left"></i></a>
+    <div id="background"></div>
+    <table id="profile_blog">
+      <tbody>
+        <tr>
+          <td style="width: 8vw"><div id="profile_img_blog"></div></td>
+          <td style="width: 52vw">
+            <div id="username_blog"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="blog-display">
+      <h1 id="blog_title">Santa Run</h1>
+      <h2 id="blog_sub_title">A Platfromer</h2>
+      <div id="blog">
+        <img
+          src="https://images.unsplash.com/photo-1553748024-d1b27fb3f960?w=1450"
+        />
+        <p>
+          This is a pretty simple vertical platfromer made in python using the pygame modual.
+          <a href="Santa_Run.tar.gz" download>Download link</a>
+        <p>This is just a test box to learn how to make a output box</p>
+          <div class="code-box-container">
+            <pre id="code-box" class="language-Python">
+              <code class="language-Python">
+def highScore(Score):
+    
+  fin = open('score.txt', 'rt' ) #* open file
+            
+  P = int(fin.read()) #*read file
+            
+                
+  if P < Score:
+                    
+    fout = open('score.txt', 'wt' ) #* add new score if it is greater that highscore
+    fout.write(str(Score))
+    fout.close()
+  return P
+            
+            
+                          
+              </code>
+            </pre>
+            <div class="copy-code-button" onclick="copyCodeToClipboard()"></div>
+            <div class="copy-message" id="copy-message"></div>
+          </div>
+          
+          
+        </p>
+      </div>
+    </div>
+    <script type="text/javascript">
+      setTimeout(function () {
+        document.getElementById("loading").classList.add("animated");
+        document.getElementById("loading").classList.add("fadeOut");
+        setTimeout(function () {
+          document.getElementById("loading").classList.remove("animated");
+          document.getElementById("loading").classList.remove("fadeOut");
+          document.getElementById("loading").style.display = "none";
+        }, 800);
+      }, 1500);
+      $.getJSON("../../config.json", function (user) {
+        var icon = document.createElement("link");
+        icon.setAttribute("rel", "icon");
+        icon.setAttribute("href", user[0].userimg);
+        icon.setAttribute("type", "image/png");
+        document.getElementsByTagName("head")[0].appendChild(icon);
+        document.getElementById(
+          "profile_img_blog"
+        ).style.background = `url('${user[0].userimg}') center center`;
+        document.getElementById(
+          "username_blog"
+        ).innerHTML = `<spanstyle="display:${
+          user[0].name == null || !user[0].name ? "none" : "block"
+        };">${user[0].name}</span><br>@${
+          user[0].username
+        }<b id="blog_time"></b>`;
+        const langHeader = document.createElement("div");
+        langHeader.classList.add("code-lang-header");
+        langHeader.innerText = language;
+        codeBox.insertBefore(langHeader, codeBox.firstChild);
+      });
+  
+    </script>
+    <script  src="/script.js"></script>
+  </body>
+</html>
