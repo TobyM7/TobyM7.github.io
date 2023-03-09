@@ -27,7 +27,7 @@ document.querySelector("h3").onmouseover = (event) => {
   }, 30);
 };
 
-/* -- ⬇️⬇️ Multi-color version ⬇️⬇️ -- */
+
 
 const wrapper = document.getElementById("bubble-wrapper");
 
@@ -133,6 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
 setTimeout(function(){ 
   $('body').toggleClass('loaded'); 
 }, 2000);
